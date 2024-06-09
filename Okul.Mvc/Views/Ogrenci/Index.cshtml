@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Ogrenci>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Öğrenci Listesi</h1>
+<a asp-action="AddOgrenci" asp-controller="Ogrenci" class="btn btn-outline-primary">Öğrenci Ekleme</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Numara</th>
+            <th>Ad</th>
+            <th>Soyad</th>
+            <th>Crud İşlemler</th>
+            <th>Öğrenci İşlemleri</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Numara</td>
+                <td>@item.Ad</td>
+                <td>@item.Soyad</td>
+                <td><a class=" btn btn-sm btn-outline-success" href="/Ogrenci/EditOgrenci/@item.id">Düzenle</a>  <a  class="btn btn-sm btn-outline-danger" href="/Ogrenci/DeleteOgrenci/@item.id">Sil</a></td>
+                <td><a class="btn btn-sm btn-info" href="OgrDersSec/Index">Öğrenci Ders Bilgileri</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
